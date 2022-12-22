@@ -93,5 +93,5 @@ startApp("Hassan Adawieh");
 // help possible commands
 
 function help() {
-  console.log(`hello => hello!\nquit & exit => exit the application`);
+  console.log(`hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)`);
 }
