@@ -84,7 +84,6 @@ function quit(){
 startApp("Hassan Adawieh")
 
 // help possible commands
-
 function help() {
   console.log(`hello => hello!\nquit & exit => exit the application`)
 }
