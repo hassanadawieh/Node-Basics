@@ -38,7 +38,9 @@ function onDataReceived(text) {
     hello(text.trim() + "!");
   } else if (text === "help\n") {
     help();
-  } else {
+  }else if(text === "list\n"){
+    list()
+  }else {
     unknownCommand(text);
   }
 }
@@ -94,4 +96,11 @@ startApp("Hassan Adawieh");
 
 function help() {
   console.log(`hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)`);
+}
+
+function list(){
+  const list_name = ["Maryam", "Fatima", "Hassan"];
+for(i = 1 ; i <= list_name.length ; i++){
+    console.log( i + " " + list_name[i-1])
+  }
 }
