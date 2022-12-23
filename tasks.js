@@ -40,7 +40,11 @@ function onDataReceived(text) {
     help();
   }else if(text === "list\n"){
     list()
-  }else {
+  }else if (text.trim().startsWith("add ")){
+    add(text.trim())
+  } else if(text.trim().startsWith("remove ")|| text.trim() === "remove"){
+    remove(text.trim())
+  }else{
     unknownCommand(text);
   }
 }
@@ -97,10 +101,42 @@ startApp("Hassan Adawieh");
 function help() {
   console.log(`hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)`);
 }
-
+ const list_name = ["Maryam", "Fatima", "Hassan"];
 function list(){
-  const list_name = ["Maryam", "Fatima", "Hassan"];
 for(i = 1 ; i <= list_name.length ; i++){
     console.log( i + " " + list_name[i-1])
   }
+}
+function add(inputText) {
+  const arrText = inputText.split(" ");
+  if (arrText.length > 1) {
+    list_name.push(arrText[1])
+  } else {
+    console.log("yeah")
+  }
+  console.log(list_name);
+}
+function remove(inputText){
+  if(inputText === "remove"){
+    list_name.pop()
+    console.log(list_name)
+  }else{
+ arrText = inputText.split(" ");
+ if(arrText.length > 1){
+  if(Number(arrText[1]) === 1){
+   list_name.shift()
+  
+    console.log(list_name);
+  }else if(Number(arrText[1]) === 2){
+    list_name.splice(1,1)
+  
+    console.log(list_name);
+  }else{
+   help()
+  }
+ }
+}
+
+ 
+
 }
