@@ -99,7 +99,7 @@ startApp("Hassan Adawieh");
 // help possible commands
 
 function help() {
-  console.log(`hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)`);
+  console.log(`hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)\n remove => remove the LAST element\nremove 1 => remove the FIRST element\nremove 2 => remove the SECOND element`);
 }
  const list_name = ["Maryam", "Fatima", "Hassan"];
 function list(){
