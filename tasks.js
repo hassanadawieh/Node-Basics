@@ -34,17 +34,19 @@ function startApp(name) {
 function onDataReceived(text) {
   if (text === "quit\n" || text === "exit\n") {
     quit();
-  } else if (text.trim().startsWith("hello ")|| text.trim() === "hello") {
+  } else if (text.trim().startsWith("hello ") || text.trim() === "hello") {
     hello(text.trim() + "!");
   } else if (text === "help\n") {
     help();
-  }else if(text === "list\n"){
-    list()
-  }else if (text.trim().startsWith("add ")){
-    add(text.trim())
-  } else if(text.trim().startsWith("remove ")|| text.trim() === "remove"){
-    remove(text.trim())
-  }else{
+  } else if (text === "list\n") {
+    list();
+  } else if (text.trim().startsWith("add ")) {
+    add(text.trim());
+  } else if (text.trim().startsWith("remove ") || text.trim() === "remove") {
+    remove(text.trim());
+  } else if (text.trim().startsWith("edit ") || text.trim() === "edit") {
+    edit(text.trim());
+  } else {
     unknownCommand(text);
   }
 }
@@ -99,44 +101,67 @@ startApp("Hassan Adawieh");
 // help possible commands
 
 function help() {
-  console.log(`hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)\n remove => remove the LAST element\nremove 1 => remove the FIRST element\nremove 2 => remove the SECOND element`);
+  console.log(
+    `hello => hello!\nquit & exit => exit the application\n hello name => hello this name! LIKE (hello hassan!)\n remove => remove the LAST element\nremove 1 => remove the FIRST element\nremove 2 => remove the SECOND element`
+  );
 }
- const list_name = ["Maryam", "Fatima", "Hassan"];
-function list(){
-for(i = 1 ; i <= list_name.length ; i++){
-    console.log( i + " " + list_name[i-1])
+const list_name = ["Maryam", "Fatima", "Hassan"];
+function list() {
+  for (i = 1; i <= list_name.length; i++) {
+    console.log(i + " " + list_name[i - 1]);
   }
 }
 function add(inputText) {
   const arrText = inputText.split(" ");
   if (arrText.length > 1) {
-    list_name.push(arrText[1])
+    list_name.push(arrText[1]);
   } else {
-    console.log("yeah")
+    console.log("yeah");
   }
   console.log(list_name);
 }
-function remove(inputText){
-  if(inputText === "remove"){
-    list_name.pop()
-    console.log(list_name)
-  }else{
- arrText = inputText.split(" ");
- if(arrText.length > 1){
-  if(Number(arrText[1]) === 1){
-   list_name.shift()
-  
+function remove(inputText) {
+  if (inputText === "remove") {
+    list_name.pop();
     console.log(list_name);
-  }else if(Number(arrText[1]) === 2){
-    list_name.splice(1,1)
-  
-    console.log(list_name);
-  }else{
-   console.log("does not exist")
+  } else {
+    arrText = inputText.split(" ");
+    if (arrText.length > 1) {
+      if (Number(arrText[1]) === 1) {
+        list_name.shift();
+
+        console.log(list_name);
+      } else if (Number(arrText[1]) === 2) {
+        list_name.splice(1, 1);
+
+        console.log(list_name);
+      } else {
+        console.log("does not exist");
+      }
+    }
   }
- }
 }
 
- 
-
+function edit(inputText) {
+  if (inputText === "edit") {
+    console.log("error");
+  } else {
+    let arrText = inputText.split(" ");
+    console.log(arrText)
+    if (arrText.length > 1) {
+      if(Number(arrText[1]) !== 1){
+      arrText.shift();
+      arrText = arrText.join(" ");
+      list_name[list_name.length - 1] = arrText;
+    }else if(Number(arrText[1]) === 1){
+       arrText.shift();
+       arrText.shift();
+       console.log(arrText)
+      arrText = arrText.join(" ");
+      list_name[0] =  arrText;
+    }else{
+      console.log("error")
+    }
+  }
+  }
 }
