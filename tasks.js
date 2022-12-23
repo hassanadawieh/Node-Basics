@@ -143,22 +143,29 @@ function remove(inputText) {
 }
 
 function edit(inputText) {
+  
   if (inputText === "edit") {
     console.log("error");
+  
+  
   } else {
     let arrText = inputText.split(" ");
-    console.log(arrText)
+  
     if (arrText.length > 1) {
-      if(Number(arrText[1]) !== 1){
+      if(!parseInt(+arrText[1]) ){
       arrText.shift();
       arrText = arrText.join(" ");
-      list_name[list_name.length - 1] = arrText;
-    }else if(Number(arrText[1]) === 1){
+      list_name[list_name.length -1] = arrText;
+    
+    
+    }else if(typeof((+arrText[1])) === "number"){
+      num = +arrText[1];
        arrText.shift();
        arrText.shift();
-       console.log(arrText)
       arrText = arrText.join(" ");
-      list_name[0] =  arrText;
+      list_name[num-1] =  arrText;
+    
+    
     }else{
       console.log("error")
     }
