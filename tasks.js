@@ -132,7 +132,7 @@ function remove(inputText){
   
     console.log(list_name);
   }else{
-   help()
+   console.log("does not exist")
   }
  }
 }
